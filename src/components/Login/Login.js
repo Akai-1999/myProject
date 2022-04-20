@@ -4,8 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getEtudiant, getLogin } from "../../API";
 import { useEffect } from "react";
-import { ReactSession } from "react-client-session";
-ReactSession.setStoreType("localStorage");
 export const Login = ({ setLogedIn }) => {
   const navigate = useNavigate();
 
@@ -30,8 +28,8 @@ export const Login = ({ setLogedIn }) => {
       const res = await getLogin(etudiant);
       if (res.message == "succes") {
         setLogedIn(true);
-        ReactSession.set("cne", etudiant.cne);
-        ReactSession.set("cin", etudiant.cin);
+        window.sessionStorage.setItem("cne", etudiant.cne);
+        window.sessionStorage.setItem("cin", etudiant.cin);
         navigate("/home");
       }
     } catch (err) {
