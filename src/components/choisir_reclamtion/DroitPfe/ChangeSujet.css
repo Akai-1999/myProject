@@ -1,0 +1,93 @@
+* {
+  --color-dzwamel: rgb(18, 167, 253);
+  --color-ak7aaaal: rgba(0, 0, 0, 0.5);
+  font-family: 'Gill Sans', sans-serif;
+}
+
+.contener {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(45deg, #fff 50%, var(--color-dzwamel) 50%);
+}
+
+.content {
+  background-color: whitesmoke;
+  box-shadow: -5px 5px 20px 5px rgba(0, 0, 0, 0.4);
+  /* height: 350px; */
+  width: clamp(350px, 30%, 450px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem 0;
+}
+
+.content h4 {
+  color: var(--color-dzwamel);
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.content form {
+  width: 100%;
+}
+
+.content :is(p, label) {
+  color: var(--color-ak7aaaal);
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.content :is(h4, p, .messageType, button) {
+  margin: 0.8rem 1.3rem;
+}
+
+.content textarea {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  width: calc(100% - 2rem);
+  margin: 15px;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.contener .messageType {
+  align-self: center;
+}
+
+.content .messageType label {
+  margin: 5px;
+  margin-right: 20px;
+}
+
+.contener .messageType input[type='radio'] {
+  /* -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent; */
+  font: inherit;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--color-ak7aaaal);
+  margin: 0;
+  margin-left: 20px;
+}
+
+.contener form {
+  display: flex;
+  flex-direction: column;
+}
+
+.content form button {
+  align-self: center;
+  padding: 0.6rem;
+  width: 80%;
+  border: none;
+  background-color: var(--color-dzwamel);
+  color: #fff;
+}

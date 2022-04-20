@@ -1,0 +1,66 @@
+.form-RetirerModule {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: clamp(400px, 60%, 600px);
+  margin-top: 5%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-RetirerModule.titre_form {
+  width: 100%;
+}
+
+.form-RetirerModule .titre_form img {
+  width: 100%;
+}
+.form-RetirerModule .inputs input {
+  width: 60%;
+  padding: 0.5rem 1rem;
+  background-color: rgb(153, 173, 196);
+  border: 1px solid #f1f1f1;
+  outline: none;
+  font-size: large;
+  border-radius: 10px;
+}
+label {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+}
+.form-RetirerModule .inputs {
+  border: 2px solid red;
+}
+.form-RetirerModule .inputs .input {
+  position: relative;
+  left: 22%;
+}
+.form-RetirerModule .inputs button {
+  position: relative;
+  background-color: bisque;
+  left: 32%;
+  margin: 30px;
+}
+.form-RetirerModule .inputs h4 {
+  position: relative;
+  left: 35%;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+@media (max-width: 786px) {
+  .form-RetirerModule {
+    margin-top: 13%;
+  }
+  h4 {
+    left: 31%;
+  }
+  .form-RetirerModule .inputs button {
+    left: 29%;
+  }
+}
