@@ -64,7 +64,7 @@ function Choisir_recl() {
             <li>
               <div className="buttom" onClick={Recorrection}>
                 {' '}
-                <a href="recorrection">Recorrection</a>
+                <a href="">Recorrection</a>
               </div>
             </li>
           </ul>
@@ -78,13 +78,13 @@ function Choisir_recl() {
           <ul>
             <li>
               <div className="buttom" onClick={handleClick_ajoutermodule}>
-                <a href="ajoutermodule">Ajouter module</a>
+                <a href="">Ajouter module</a>
               </div>
             </li>
 
             <li>
               <div className="buttom" onClick={handleClick_anullercomentation}>
-                <a href="anullercomentation">Anuller compensation</a>
+                <a href="">Anuller compensation</a>
               </div>
             </li>
           </ul>
@@ -99,7 +99,7 @@ function Choisir_recl() {
             <li>
               <div className="buttom" onClick={handleClick}>
                 {' '}
-                <a href="derogation">Demander</a>
+                <a href="">Demande Derogation</a>
               </div>
             </li>
           </ul>

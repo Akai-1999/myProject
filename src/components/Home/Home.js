@@ -13,13 +13,13 @@ function Home() {
     <div className="home">
       <div className="section">
         <em>pour faire une reclamation cliquer ici</em>
-        <button className="btn1 btn" onClick={handleClick}>
+        <button className="btn1 btn9" onClick={handleClick}>
           Reclamation
         </button>
       </div>
       <div className="section">
         <em>pour suivez votre dammande cliquer ici</em>
-        <button className="btn2 btn">Suivre</button>
+        <button className="btn2 btn9">Suivre</button>
       </div>
     </div>
   )

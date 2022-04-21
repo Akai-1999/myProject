@@ -2,16 +2,13 @@ import './AdminLogin.css'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { getLoginAdmin } from '../../API'
 export const AdmonLogin = ({ logedIn, setLogedIn }, { auth }) => {
   const navigate = useNavigate()
 
-  const handleClick = () => {
-    navigate('/creeradmin')
-  }
-
   const [admin, setAdmin] = useState({
-    code: '',
-    gmail: '',
+    email: '',
+    password: '',
   })
 
   const handleChange = (e) => {
@@ -21,19 +18,19 @@ export const AdmonLogin = ({ logedIn, setLogedIn }, { auth }) => {
       [name]: value,
     })
   }
-  const AdminLogin = () => {
-    axios.post('http://localhost:7000/AdmonLogin', admin).then((res) => {
-      console.log(res)
-      if (res.data.message == 'succes') {
+  const AdminLogin = async () => {
+    try {
+      const res = await getLoginAdmin(admin)
+      if (res.message == 'succes') {
         setLogedIn(true)
-      } else {
-        alert('rah pass ghalet')
+        window.sessionStorage.setItem('email', admin.email)
+        window.sessionStorage.setItem('password', admin.password)
+        navigate('/creecompte')
       }
-    })
-    auth()
-    navigate('/home')
+    } catch (err) {
+      console.error(err)
+    }
   }
-
   return (
     <div className="form">
       {console.log('Admin', admin)}
@@ -57,12 +54,12 @@ export const AdmonLogin = ({ logedIn, setLogedIn }, { auth }) => {
           </div>
         </div>
         <div className="input">
-          <label htmlFor="">Code</label>
+          <label htmlFor="">Password</label>
           <div>
             <input
               type="password"
-              name="code"
-              value={admin.code}
+              name="password"
+              value={admin.password}
               placeholder=""
               onChange={handleChange}
             />
@@ -71,11 +68,7 @@ export const AdmonLogin = ({ logedIn, setLogedIn }, { auth }) => {
 
         {/* <button className="btn_1">AdminLogin</button> */}
         <button className="btn_2" onClick={AdminLogin}>
-          AdminLogin    
-        </button>
-
-        <button className="btn_2" onClick={handleClick}>
-          créer Admin
+          Login
         </button>
       </div>
     </div>

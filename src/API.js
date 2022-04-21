@@ -40,3 +40,14 @@ export const getLogin = async (etudiant) => {
   const data = await response.json()
   return data
 }
+
+export const getLoginAdmin = async (admin) => {
+  const response = await fetch(API.base + '/admin/login', {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(admin),
+    headers: { 'Content-type': 'application/json; charset=UTF-8' },
+  })
+  const data = await response.json()
+  return data
+}

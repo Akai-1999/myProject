@@ -1,41 +1,41 @@
-import "./Login.css";
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { getEtudiant, getLogin } from "../../API";
-import { useEffect } from "react";
+import './Login.css'
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { getEtudiant, getLogin } from '../../API'
+import { useEffect } from 'react'
 export const Login = ({ setLogedIn }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate("/creecompte");
-  };
+    navigate('/creecompte')
+  }
 
   const [etudiant, setEtudiant] = useState({
-    cne: "",
-    cin: "",
-  });
+    cne: '',
+    cin: '',
+  })
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setEtudiant({
       ...etudiant,
       [name]: value,
-    });
-  };
+    })
+  }
   const login = async () => {
     try {
-      const res = await getLogin(etudiant);
-      if (res.message == "succes") {
-        setLogedIn(true);
-        window.sessionStorage.setItem("cne", etudiant.cne);
-        window.sessionStorage.setItem("cin", etudiant.cin);
-        navigate("/home");
+      const res = await getLogin(etudiant)
+      if (res.message == 'succes') {
+        setLogedIn(true)
+        window.sessionStorage.setItem('cne', etudiant.cne)
+        window.sessionStorage.setItem('cin', etudiant.cin)
+        navigate('/home')
       }
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
-  };
+  }
 
   return (
     <div className="form">
@@ -79,7 +79,8 @@ export const Login = ({ setLogedIn }) => {
         <button className="btn_2" onClick={handleClick}>
           créer compte
         </button>
+        <a href="admin">Admin Login</a>
       </div>
     </div>
-  );
-};
+  )
+}
