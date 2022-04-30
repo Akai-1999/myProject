@@ -1,0 +1,43 @@
+.listDemandes {
+  padding: 2rem;
+}
+
+.listDemandes .demmandesContent {
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.listDemandes .demmandesContent .listTypes {
+  display: flex;
+  flex-direction: column;
+}
+
+.listDemandes .demmandesContent .listTypes span {
+  padding: 0.8rem 1.2rem;
+  color: rgb(0, 147, 184);
+  border-right: 5px solid;
+  /* width: 250px; */
+  font-size: 1.2em;
+}
+
+.listDemandes .demmandesContent .listTypes span:hover {
+  background-color: rgba(125, 125, 125, 0.1);
+}
+
+.selected {
+  border-right: 0px !important;
+  background-color: rgba(125, 125, 125, 0.2) !important;
+}
+
+.listDemandes .demmandesContent .list {
+  background-color: rgba(125, 125, 125, 0.2);
+  width: 100%;
+  padding: 1rem;
+}
+
+.listDemandes .demmandesContent .list .item-demande {
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(0, 147, 184);
+}

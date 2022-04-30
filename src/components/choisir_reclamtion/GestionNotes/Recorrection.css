@@ -1,0 +1,7 @@
+.input2 input {
+  margin-left: 80px;
+}
+::placeholder {
+  color: rgb(132, 132, 136);
+  font-size: 0.7em;
+}

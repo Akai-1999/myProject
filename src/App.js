@@ -16,11 +16,14 @@ import DemandeDroitpfe from './components/choisir_reclamtion/DroitPfe/DemandeDro
 import AjouterModule from './components/choisir_reclamtion/GestionModules/AjouterModule'
 import Choisir_recl from './components/choisir_reclamtion/Choisir_recl'
 import AnullerCompensation from './components/choisir_reclamtion/GestionModules/AnullerCompensation'
+import Suivre from './Suivre/Suivre'
+import suivreAdmin from './SuivreAdmin/suivreAdmin'
 
 import { AdmonLogin } from './components/admin/AdminLogin'
 import { useEffect } from 'react'
-import { getEtudiant } from './API'
+import { getEtudiant, getLoginAdmin } from './API'
 import Recorrection from './components/choisir_reclamtion/GestionNotes/Recorrection'
+import SuivreAdmin from './SuivreAdmin/suivreAdmin'
 
 const App = () => {
   const [logedIn, setLogedIn] = useState(
@@ -28,17 +31,32 @@ const App = () => {
       ? true
       : false
   )
-  const [etudiant, setEtudiant] = useState(null)
+
+  const [adminLogedIn, setAdminLogedIn] = useState(
+    window.sessionStorage.getItem('email') &&
+      window.sessionStorage.getItem('password')
+      ? true
+      : false
+  )
+
+  const [etudiant, setEtudiant] = useState({})
 
   useEffect(() => {
-    console.log(window.sessionStorage.getItem('cne'))
-    console.log(window.sessionStorage.getItem('cin'))
-  }, [])
+    ;(async () => {
+      const etu = await getEtudiant(window.sessionStorage.getItem('cne'))
+      setEtudiant(etu)
+    })()
+  }, [logedIn])
 
   return (
     <div className="App">
-      <Header />
       <Router>
+        <Header
+          logedIn={logedIn}
+          adminLogedIn={adminLogedIn}
+          setLogedIn={setLogedIn}
+          setAdminLogedIn={setAdminLogedIn}
+        />
         <Routes>
           <Route
             exact
@@ -83,8 +101,21 @@ const App = () => {
             path="/home/choisirreclamation/recorrection"
             element={logedIn ? <Recorrection /> : <Navigate to="/" />}
           />
+          <Route
+            path="/home/etudiant/suivre"
+            element={
+              logedIn ? <Suivre etudiant={etudiant} /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/admin/suivre"
+            element={adminLogedIn ? <SuivreAdmin /> : <Navigate to="/admin" />}
+          />
           <Route path="/login" element={<Login setLogedIn={setLogedIn} />} />
-          <Route path="/admin" element={<AdmonLogin />}></Route>
+          <Route
+            path="/admin"
+            element={<AdmonLogin setAdminLogedIn={setAdminLogedIn} />}
+          ></Route>
           <Route path="/creecompte" element={<Creecompte />}></Route>
         </Routes>
       </Router>

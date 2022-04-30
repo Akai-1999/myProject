@@ -1,9 +1,8 @@
 import './AdminLogin.css'
 import React, { useState } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { getLoginAdmin } from '../../API'
-export const AdmonLogin = ({ logedIn, setLogedIn }, { auth }) => {
+export const AdmonLogin = ({ setAdminLogedIn }) => {
   const navigate = useNavigate()
 
   const [admin, setAdmin] = useState({
@@ -22,10 +21,16 @@ export const AdmonLogin = ({ logedIn, setLogedIn }, { auth }) => {
     try {
       const res = await getLoginAdmin(admin)
       if (res.message == 'succes') {
-        setLogedIn(true)
+        setAdminLogedIn(true)
         window.sessionStorage.setItem('email', admin.email)
         window.sessionStorage.setItem('password', admin.password)
-        navigate('/creecompte')
+        navigate('/admin/suivre')
+      }
+      if (res.message == 'email est incorrect') {
+        alert('email INCORRECT')
+      }
+      if (res.message == 'password est incorrect') {
+        alert('password INCORRECT')
       }
     } catch (err) {
       console.error(err)

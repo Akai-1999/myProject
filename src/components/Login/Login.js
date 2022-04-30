@@ -32,6 +32,12 @@ export const Login = ({ setLogedIn }) => {
         window.sessionStorage.setItem('cin', etudiant.cin)
         navigate('/home')
       }
+      if (res.message == 'cne est incorrect') {
+        alert('CNE INCORRECT')
+      }
+      if (res.message == 'cin est incorrect') {
+        alert('CIN INCORRECT')
+      }
     } catch (err) {
       console.error(err)
     }

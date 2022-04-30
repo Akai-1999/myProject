@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { postDemande } from '../../../API'
 import './changeBinom.css'
 
 function ChangeBinom() {
+  const [nom, setNom] = useState('')
+  const [prenom, setPrenom] = useState('')
+  const [cneb, setCneB] = useState('')
+  const cne = window.sessionStorage.getItem('cne')
+
+  const postData = async () => {
+    await postDemande('changebinom', {
+      nomBinom: nom,
+      prenomBinom: prenom,
+      cneBinome: cneb,
+      cneEtudiant: cne,
+    })
+    alert('Votre Demande est Envoyer')
+  }
+
   return (
     <div className="form-ChangeBinom">
       <div className="titre_form">
@@ -16,23 +32,23 @@ function ChangeBinom() {
         <div className="input">
           <label htmlFor="">Nom de binome</label>
           <div>
-            <input type="nom" name="nom" />
+            <input type="text" onChange={(e) => setNom(e.target.value)} />
           </div>
         </div>
         <div className="input">
           <label htmlFor="">Prenom de binome</label>
           <div>
-            <input type="text" name="prenom" />
+            <input type="text" onChange={(e) => setPrenom(e.target.value)} />
           </div>
         </div>
         <div className="input">
           <label htmlFor="">CNE de binome</label>
           <div>
-            <input type="text" name="cne" />
+            <input type="text" onChange={(e) => setCneB(e.target.value)} />
           </div>
         </div>
 
-        <button type="submit">Envoyer</button>
+        <button onClick={postData}>Envoyer</button>
       </div>
     </div>
   )

@@ -27,6 +27,12 @@
   /* border: 1px solid; */
 }
 
+.header .links ul li .fa-sign-out {
+  font-size: 1.4em;
+  color: rgb(0, 147, 184);
+  cursor: pointer;
+}
+
 .header .links ul li a {
   text-decoration: none;
   color: rgb(0, 147, 184);
@@ -59,7 +65,7 @@
 }
 
 .show {
-  height: 240px;
+  height: 300px;
 }
 
 @media (max-width: 768px) {

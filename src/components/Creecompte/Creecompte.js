@@ -123,7 +123,7 @@ function Creecompte() {
           />
         </div>
 
-        {isAdd ? 'Etudiant est bien cree' : ''}
+        {isAdd ? 'Etudiant est Enregistrer' : ''}
 
         <button
           className="btn_2"

@@ -8,7 +8,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
   () => {
-    console.log('connected my data')
+    console.log('connected data Etudiant')
   }
 )
 

@@ -1,7 +1,20 @@
 import React from 'react'
+import { useState } from 'react'
+import { postDemande } from '../../../API'
 import './AjouterModule.css'
 
 function AjouterModule() {
+  const [nomModule, setNomModule] = useState('')
+  const cne = window.sessionStorage.getItem('cne')
+
+  const postData = async () => {
+    await postDemande('ajouterModule', {
+      nomModule: nomModule,
+      cneEtudiant: cne,
+    })
+    alert('Votre Demande est Envoyer')
+  }
+
   return (
     <div className="form-AjouterModule">
       <div className="titre_form">
@@ -17,11 +30,11 @@ function AjouterModule() {
         <div className="input">
           <label htmlFor="">Nom de module</label>
           <div>
-            <input type="text" name="prenom" />
+            <input type="text" onChange={(e) => setNomModule(e.target.value)} />
           </div>
         </div>
 
-        <button>Envoyer</button>
+        <button onClick={postData}>Envoyer</button>
       </div>
     </div>
   )

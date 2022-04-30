@@ -19,7 +19,12 @@ function Home() {
       </div>
       <div className="section">
         <em>pour suivez votre dammande cliquer ici</em>
-        <button className="btn2 btn9">Suivre</button>
+        <button
+          className="btn2 btn9"
+          onClick={() => navigate('/home/etudiant/suivre')}
+        >
+          Suivre
+        </button>
       </div>
     </div>
   )

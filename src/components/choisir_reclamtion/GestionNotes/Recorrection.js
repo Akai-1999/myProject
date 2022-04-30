@@ -1,6 +1,21 @@
+import { postDemande } from '../../../API'
+import './Recorrection.css'
 import React from 'react'
+import { useState } from 'react'
 
 function Recorrection() {
+  const [nomModule, setNomModule] = useState('')
+  const cne = window.sessionStorage.getItem('cne')
+
+  const postData = async (e) => {
+    e.preventDefault()
+    await postDemande('recorrection', {
+      nomModule: nomModule,
+      cneEtudiant: cne,
+    })
+    alert('Votre Demande est Envoyer')
+  }
+
   return (
     <div className="contener">
       <div className="content">
@@ -9,21 +24,14 @@ function Recorrection() {
           Si vous voulez tirez la compensation de la derniere semestre ,cliquer
           sur le button pour envoyer une demande de anullation.
         </p>
-        <form action="">
-          {/* <textarea
-            name="describtion"
-            cols="30"
-            rows="10"
-            placeholder="Describe your issue or idea..."
-          ></textarea>
-          <div className="messageType">
-            <input type="radio" id="type" name="type" value="bug" />
-            <label htmlFor="type">Bug</label>
-            <input type="radio" id="type" name="type" value="comment" />
-            <label htmlFor="type">Comment</label>
-            <input type="radio" id="type" name="type" value="other" />
-            <label htmlFor="type">Other</label>
-          </div> */}
+        <form onSubmit={postData}>
+          <div className="input2">
+            <input
+              type="text"
+              placeholder="Nom de module que vous voulez corriger"
+              onChange={(e) => setNomModule(e.target.value)}
+            />
+          </div>
           <button type="submit">Envoyer Demande</button>
         </form>
       </div>
